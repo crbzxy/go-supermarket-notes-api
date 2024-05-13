@@ -90,7 +90,7 @@ Este es un servidor de API para la gestión de listas de supermercado y notas pe
 
     ```bash
 
----
+
 
 go-supermarket-notes-api/
 ├── cmd/
