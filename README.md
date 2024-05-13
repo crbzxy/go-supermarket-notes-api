@@ -21,40 +21,40 @@ Este es un servidor de API para la gestión de listas de supermercado y notas pe
 
 1. Clona el repositorio:
 
-    ```bash
-    git clone https://github.com/tu-usuario/go-supermarket-notes-api.git
-    cd go-supermarket-notes-api
-    ```
+   ```bash
+   git clone https://github.com/tu-usuario/go-supermarket-notes-api.git
+   cd go-supermarket-notes-api
+   ```
 
 2. Instala las dependencias:
 
-    ```bash
-    go mod tidy
-    ```
+   ```bash
+   go mod tidy
+   ```
 
 3. Crea un archivo `.env` en el directorio raíz del proyecto con el siguiente contenido:
 
-    ```env
-    MONGODB_URI=mongodb+srv://tu-usuario:tu-contraseña@tu-cluster.mongodb.net/?retryWrites=true&w=majority&appName=TuApp
-    DB_NAME=nombre_de_tu_base_de_datos
-    PORT=8080
-    ```
+   ```env
+   MONGODB_URI=mongodb+srv://tu-usuario:tu-contraseña@tu-cluster.mongodb.net/?retryWrites=true&w=majority&appName=TuApp
+   DB_NAME=nombre_de_tu_base_de_datos
+   PORT=8080
+   ```
 
-    Asegúrate de reemplazar `tu-usuario`, `tu-contraseña`, `tu-cluster` y `nombre_de_tu_base_de_datos` con los valores correctos.
+   Asegúrate de reemplazar `tu-usuario`, `tu-contraseña`, `tu-cluster` y `nombre_de_tu_base_de_datos` con los valores correctos.
 
 4. Genera la documentación de Swagger:
 
-    ```bash
-    swag init -g cmd/main.go
-    ```
+   ```bash
+   swag init -g cmd/main.go
+   ```
 
 ## Uso
 
 1. Inicia el servidor:
 
-    ```bash
-    go run cmd/main.go
-    ```
+   ```bash
+   go run cmd/main.go
+   ```
 
 2. La API estará disponible en `http://localhost:8080`.
 
@@ -88,7 +88,10 @@ Este es un servidor de API para la gestión de listas de supermercado y notas pe
 
 ## Estructura del Proyecto
 
------
+    ```bash
+
+---
+
 go-supermarket-notes-api/
 ├── cmd/
 │ └── main.go
@@ -116,8 +119,6 @@ go-supermarket-notes-api/
 ├── .gitignore
 ├── go.mod
 └── go.sum
-
-
-
+```
 
 # go-supermarket-notes-api
