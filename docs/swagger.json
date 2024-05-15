@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "description": "This is a sample server for managing supermarket lists and notes.",
-        "title": "Supermarket and Notes API",
+        "title": "Lista de compras y notas de supermercado API",
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
             "name": "API Support",
@@ -261,7 +261,7 @@
                 "summary": "Create a note",
                 "parameters": [
                     {
-                        "description": "Note",
+                        "description": "Note Example",
                         "name": "note",
                         "in": "body",
                         "required": true,
@@ -271,14 +271,20 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "201": {
+                        "description": "Created",
                         "schema": {
                             "$ref": "#/definitions/models.Note"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/utils.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
                         "schema": {
                             "$ref": "#/definitions/utils.ErrorResponse"
                         }
@@ -344,7 +350,7 @@
                         "required": true
                     },
                     {
-                        "description": "Note",
+                        "description": "Note Example",
                         "name": "note",
                         "in": "body",
                         "required": true,

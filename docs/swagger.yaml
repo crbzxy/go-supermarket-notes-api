@@ -38,7 +38,7 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: http://swagger.io/terms/
-  title: Supermarket and Notes API
+  title: Lista de compras y notas de supermercado API
   version: "1.0"
 paths:
   /lists:
@@ -198,7 +198,7 @@ paths:
       - application/json
       description: Create a new note
       parameters:
-      - description: Note
+      - description: Note Example
         in: body
         name: note
         required: true
@@ -207,12 +207,16 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
-          description: OK
+        "201":
+          description: Created
           schema:
             $ref: '#/definitions/models.Note'
         "400":
           description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.ErrorResponse'
+        "500":
+          description: Internal Server Error
           schema:
             $ref: '#/definitions/utils.ErrorResponse'
       summary: Create a note
@@ -279,7 +283,7 @@ paths:
         name: id
         required: true
         type: string
-      - description: Note
+      - description: Note Example
         in: body
         name: note
         required: true

@@ -12,7 +12,7 @@ import (
     httpSwagger "github.com/swaggo/http-swagger"
 )
 
-// @title Supermarket and Notes API
+// @title Lista de compras y notas de supermercado API
 // @version 1.0
 // @description This is a sample server for managing supermarket lists and notes.
 // @termsOfService http://swagger.io/terms/
@@ -42,7 +42,6 @@ func main() {
         log.Fatalf("Error loading .env file: %v", err)
     } else {
         log.Println("Successfully loaded .env file")
-        log.Println("MONGODB_URI:", os.Getenv("MONGODB_URI"))
         log.Println("DB_NAME:", os.Getenv("DB_NAME"))
         log.Println("PORT:", os.Getenv("PORT"))
     }

@@ -6,10 +6,13 @@ import (
     "go-supermarket-notes-api/models"
     "go.mongodb.org/mongo-driver/bson"
     "go.mongodb.org/mongo-driver/bson/primitive"
+    "time"
 )
 
 func CreateNote(note models.Note) error {
     collection := config.GetCollection("notes")
+    note.ID = primitive.NewObjectID()
+    note.CreatedAt = primitive.NewDateTimeFromTime(time.Now())
     _, err := collection.InsertOne(context.Background(), note)
     return err
 }
@@ -36,19 +39,26 @@ func GetNotes() ([]models.Note, error) {
 func GetNote(id string) (*models.Note, error) {
     collection := config.GetCollection("notes")
     var note models.Note
-    objID, _ := primitive.ObjectIDFromHex(id)
-    err := collection.FindOne(context.Background(), bson.M{"_id": objID}).Decode(&note)
+    objID, err := primitive.ObjectIDFromHex(id)
+    if err != nil {
+        return nil, err
+    }
+    err = collection.FindOne(context.Background(), bson.M{"_id": objID}).Decode(&note)
     return &note, err
 }
 
 func UpdateNote(id string, note models.Note) error {
     collection := config.GetCollection("notes")
-    objID, _ := primitive.ObjectIDFromHex(id)
-    _, err := collection.UpdateOne(context.Background(), bson.M{"_id": objID}, bson.D{
+    objID, err := primitive.ObjectIDFromHex(id)
+    if err != nil {
+        return err
+    }
+    _, err = collection.UpdateOne(context.Background(), bson.M{"_id": objID}, bson.D{
         {Key: "$set", Value: bson.M{
             "createdAt": note.CreatedAt,
             "completed": note.Completed,
             "author":    note.Author,
+            "comment":   note.Comment, // Asegúrate de actualizar el campo Comment
         }},
     })
     return err
@@ -56,7 +66,10 @@ func UpdateNote(id string, note models.Note) error {
 
 func DeleteNote(id string) error {
     collection := config.GetCollection("notes")
-    objID, _ := primitive.ObjectIDFromHex(id)
-    _, err := collection.DeleteOne(context.Background(), bson.M{"_id": objID})
+    objID, err := primitive.ObjectIDFromHex(id)
+    if err != nil {
+        return err
+    }
+    _, err = collection.DeleteOne(context.Background(), bson.M{"_id": objID})
     return err
 }

@@ -15,9 +15,10 @@ import (
 // @Tags notes
 // @Accept  json
 // @Produce  json
-// @Param note body models.Note true "Note"
-// @Success 200 {object} models.Note
+// @Param note body models.Note true "Note Example" 
+// @Success 201 {object} models.Note
 // @Failure 400 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Router /notes [post]
 func CreateNote(w http.ResponseWriter, r *http.Request) {
     var note models.Note
@@ -82,7 +83,7 @@ func GetNote(w http.ResponseWriter, r *http.Request) {
 // @Accept  json
 // @Produce  json
 // @Param id path string true "Note ID"
-// @Param note body models.Note true "Note"
+// @Param note body models.Note true "Note Example"
 // @Success 200 {object} models.Note
 // @Failure 400 {object} utils.ErrorResponse
 // @Failure 500 {object} utils.ErrorResponse

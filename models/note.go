@@ -7,4 +7,5 @@ type Note struct {
     CreatedAt   primitive.DateTime `json:"createdAt" bson:"createdAt"`
     Completed   bool               `json:"completed" bson:"completed"`
     Author      string             `json:"author" bson:"author"`
+    Comment     string             `json:"comment" bson:"comment"`
 }

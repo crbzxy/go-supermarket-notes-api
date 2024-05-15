@@ -267,7 +267,7 @@ const docTemplate = `{
                 "summary": "Create a note",
                 "parameters": [
                     {
-                        "description": "Note",
+                        "description": "Note Example",
                         "name": "note",
                         "in": "body",
                         "required": true,
@@ -277,14 +277,20 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "201": {
+                        "description": "Created",
                         "schema": {
                             "$ref": "#/definitions/models.Note"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/utils.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
                         "schema": {
                             "$ref": "#/definitions/utils.ErrorResponse"
                         }
@@ -350,7 +356,7 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "Note",
+                        "description": "Note Example",
                         "name": "note",
                         "in": "body",
                         "required": true,
@@ -676,7 +682,7 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "localhost:8080",
 	BasePath:         "/",
 	Schemes:          []string{},
-	Title:            "Supermarket and Notes API",
+	Title:            "Lista de compras y notas de supermercado API",
 	Description:      "This is a sample server for managing supermarket lists and notes.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
